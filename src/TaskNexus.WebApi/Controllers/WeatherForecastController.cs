@@ -5,22 +5,22 @@ namespace TaskNexus.WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class LoginController : ControllerBase
     {
 
-        private readonly ILogger<WeatherForecastController> _logger;
-        private readonly IWereService wereService;
+        private readonly ILogger<LoginController> _logger;
+        private readonly ILoginService loginService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, IWereService wereService)
+        public LoginController(ILogger<LoginController> logger, ILoginService loginService)
         {
             _logger = logger;
-            this.wereService = wereService;
+            this.loginService = loginService;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public Task<IEnumerable<WeatherForecastDto>> Get(CancellationToken token)
+        [HttpGet(Name = "GetLogin")]
+        public Task<LoginDto> Get(CancellationToken token)
         {
-            return wereService.GetList(token);
+            return loginService.GetIsLogin(token);
         }
     }
 }
