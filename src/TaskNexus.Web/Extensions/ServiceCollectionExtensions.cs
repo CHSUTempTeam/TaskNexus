@@ -8,6 +8,7 @@ namespace TaskNexus.Web.Extensions
         {
             // тут надо интерфейс регать
             services.AddSingleton<WereService>();
+            services.AddSingleton<LoginService>();
             return services;
         }
     }
