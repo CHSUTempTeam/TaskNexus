@@ -6,14 +6,21 @@
 	ViewData["Title"] = "Login | TaskNexus";
 }
 
-<div class="bar-line" >
-    <div class="bar-line__left"></div>
+@section Header {
+}
 
-    <div class="bar-line__right">        
-            <div class="chat-box"></div>
-        
-        <form>
-            <input type="text" class="width-filter" placeholder="Отправить сообщение" >
-        </form>
-    </div>
+<div class="">
+    <form action="" method="post" >
+        <div class="container">
+
+            <input type="text" placeholder="ЛОГИН" name="uname" required>
+
+            <input type="password" placeholder="ПАРОЛЬ" name="psw" required>
+
+            <button type="submit">ВХОД</button>
+        </div>
+    </form>
 </div>
+
+@section Footer {
+}
