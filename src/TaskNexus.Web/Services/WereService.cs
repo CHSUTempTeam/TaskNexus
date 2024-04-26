@@ -15,9 +15,8 @@ namespace TaskNexus.Web.Services
             // http://localhost:5275/ это хранить в конфиге appsetting.json
             // wereforacast надо указать в базовом классе потому что это
 
-            await httpClient.PostAsJsonAsync<WeatherForecastDto>("http://localhost:5275/WeatherForecast", new WeatherForecastDto(), token){
-
-            }
+            await httpClient.PostAsJsonAsync<WeatherForecastDto>("http://localhost:5275/WeatherForecast", new WeatherForecastDto(), token);
+            
         }
     }
 }
