@@ -1,13 +1,21 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Projects | TaskNexus";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
+
+
     @foreach (var item in Model.WeatherForecastDtos)
     {
         <p>@item.TemperatureF</p>
     }
+
+    @{
+        if (Model.canLogin.isLogin) Response.Redirect("/Login");
+    }
+
+
 </div>

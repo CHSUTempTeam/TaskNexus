@@ -9,18 +9,26 @@ namespace TaskNexus.Web.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly WereService wereService;
+
+        private readonly LoginService loginService;
         public List<WeatherForecastDto> WeatherForecastDtos { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, WereService wereService)
+        public LoginDto canLogin { get; set; }
+
+        public IndexModel(ILogger<IndexModel> logger, WereService wereService, LoginService loginService)
         {
             _logger = logger;
             this.wereService = wereService;
+            this.loginService = loginService;
         }
 
         public async Task OnGet()
         {
             var list = await wereService.GetList(default);
             WeatherForecastDtos = list;
+
+            var sett = await loginService.GetIsLogin(default);
+            canLogin = sett;
         }
     }
 }

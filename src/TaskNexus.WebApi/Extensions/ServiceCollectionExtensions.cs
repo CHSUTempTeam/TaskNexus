@@ -9,6 +9,7 @@ namespace TaskNexus.WebApi.Extensions
         {
             // тут надо интерфейс регать
             services.AddScoped<IWereService, WereService>();
+            services.AddScoped<ILoginService, LoginService>();
             return services;
         }
     }
