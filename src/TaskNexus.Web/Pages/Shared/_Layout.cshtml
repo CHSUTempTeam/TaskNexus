@@ -1,28 +1,22 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/general.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TaskNexus.Web.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <div class="body-container">
+        @RenderSection("Header")
 
-    @RenderSection("Header")
+        @RenderBody()
 
-    <div class="container vw-100 vh-100">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        @RenderSection("Footer")
     </div>
 
-    @RenderSection("Footer")
-    
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)

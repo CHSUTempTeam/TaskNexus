@@ -1,52 +1,70 @@
-﻿﻿
+﻿
 @page
 @model ProjectModel
 
 @{
     ViewData["Title"] = "[NameProject] | TaskNexus";
 }
+
 @section Header{
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">TaskNexus.Web</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    <header style="display:flex">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="container-logo">
+                    <div class="header-text s3 tar lh">TASK</br>NEXUS</div>
+                    <div class="v-line"></div>
                 </div>
+                <div class="header-text s4 naming-project">
+                    НАЗВАНИЕ ПРОЕКТА
+                </div>
+            </div>
+            <div class="nav-container" style="margin-left:auto">
+                <button class="login-button button-projects">ПРОЕКТЫ</button>
+                <img class="img-avatar">
+                <button class="button-exit">
+                    <img class="img-exit" src="~/exit.png">
+                </button>
             </div>
         </nav>
     </header>
 }
 
+<div class="main-container">
+    <div class="canvas-container">
+        <div class="instrument-container">
+            <div class="instrument"><img class="instrument-img" src="~/block.png"></div>
+            <div class="instrument"><img class="instrument-img" src="~/comment.png"></div>
+            <div class="instrument"><img class="instrument-img" src="~/text.png"></div>
+            <div class="instrument"><img class="instrument-img" src="~/frame.png"></div>
+        </div>
 
-<div class="bar-line" >
-    <div class="bar-line__left"></div>
+        <div class="zoom-container">
+            <div class="zoom"><img class="instrument-img" src="~/arrow.png"></div>
+            <div class="zoom-text">100%</div>
+            <div class="zoom"><img class="instrument-img r180" src="~/arrow.png"></div>
+        </div>
 
-    <div class="bar-line__right">        
-            <div class="chat-box"></div>
-        
-        <form>
-            <input type="text" class="width-filter" placeholder="Отправить сообщение" >
-        </form>
+        <canvas id="canvas">
+        </canvas>
+    </div>
+
+
+    <div class="messanger-container">
+		<div class="info-container">
+			<div class="panel-container">
+			</div>
+        </div>
+
+        <div class="messages-container">
+        </div>
+
+        <div class="submit-container">
+            <input class="input-message">
+            <button class="button-message">ОТПРАВИТЬ</button>
+        </div>
     </div>
 </div>
 
 
 @section Footer {
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - TaskNexus.Web - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
 }
