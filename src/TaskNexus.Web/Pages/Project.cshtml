@@ -1,0 +1,70 @@
+﻿
+@page
+@model ProjectModel
+
+@{
+    ViewData["Title"] = "[NameProject] | TaskNexus";
+}
+
+@section Header{
+    <header style="display:flex">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="container-logo">
+                    <div class="header-text s3 tar lh">TASK</br>NEXUS</div>
+                    <div class="v-line"></div>
+                </div>
+                <div class="header-text s4 naming-project">
+                    НАЗВАНИЕ ПРОЕКТА
+                </div>
+            </div>
+            <div class="nav-container" style="margin-left:auto">
+                <button class="login-button button-projects">ПРОЕКТЫ</button>
+                <img class="img-avatar">
+                <button class="button-exit">
+                    <img class="img-exit" src="~/exit.png">
+                </button>
+            </div>
+        </nav>
+    </header>
+}
+
+<div class="main-container">
+    <div class="canvas-container">
+        <div class="instrument-container">
+            <div class="instrument"><img class="instrument-img" src="~/block.png"></div>
+            <div class="instrument"><img class="instrument-img" src="~/comment.png"></div>
+            <div class="instrument"><img class="instrument-img" src="~/text.png"></div>
+            <div class="instrument"><img class="instrument-img" src="~/frame.png"></div>
+        </div>
+
+        <div class="zoom-container">
+            <div class="zoom"><img class="instrument-img" src="~/arrow.png"></div>
+            <div class="zoom-text">100%</div>
+            <div class="zoom"><img class="instrument-img r180" src="~/arrow.png"></div>
+        </div>
+
+        <canvas id="canvas">
+        </canvas>
+    </div>
+
+
+    <div class="messanger-container">
+		<div class="info-container">
+			<div class="panel-container">
+			</div>
+        </div>
+
+        <div class="messages-container">
+        </div>
+
+        <div class="submit-container">
+            <input class="input-message">
+            <button class="button-message">ОТПРАВИТЬ</button>
+        </div>
+    </div>
+</div>
+
+
+@section Footer {
+}

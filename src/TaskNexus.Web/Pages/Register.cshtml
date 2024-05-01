@@ -1,0 +1,35 @@
+﻿
+@page
+@model RegisterModel
+
+@{
+	ViewData["Title"] = "Register | TaskNexus";
+}
+
+@section Header {
+}
+
+<div class="body-container">
+    <div class="login-container">
+        <form action="" method="post" class="login-form">
+            <div class="inner-container">
+                <div class="header-text s3">ПАНЕЛЬ УПРАВЛЕНИЯ</div>
+                <div class="header-text s5">РЕГИСТРАЦИЯ</div>
+                <div class="inputs-container">
+                    <input class="inputs" type="text" placeholder="ПОЧТА" name="uname" required>
+                    <input class="inputs" type="text" placeholder="НИКНЕЙМ" name="psw" required>
+                    <input class="inputs" type="password" placeholder="ПАРОЛЬ" name="psw" required>
+                    <button class="login-button" type="submit">РЕГИСТРАЦИЯ</button>
+                </div>
+
+                <div class="header-text s3 naming lh">TASK</br>NEXUS</div>
+
+                <div class="circle" id="c1"></div>
+                <div class="circle" id="c2"></div>
+            </div>
+        </form>
+    </div>
+
+</div>
+@section Footer {
+}
