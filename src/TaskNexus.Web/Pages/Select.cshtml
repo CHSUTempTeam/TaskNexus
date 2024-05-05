@@ -1,0 +1,47 @@
+﻿
+@page
+@model ProjectModel
+
+@{
+    ViewData["Title"] = "Projects | TaskNexus";
+}
+
+@section Header{
+    <header style="display:flex">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="container-logo">
+                    <div class="header-text s3 tar lh">TASK</br>NEXUS</div>
+                    <div class="v-line"></div>
+                </div>
+                <div class="header-text s4 naming-project">
+                    ВЫБЕРИТЕ ПРОЕКТ
+                </div>
+            </div>
+            <div class="nav-container" style="margin-left:auto">
+                <img class="img-avatar">
+                <button class="button-exit">
+                    <img class="img-exit" src="~/exit.png">
+                </button>
+            </div>
+        </nav>
+    </header>
+}  
+
+<div class="main-container-select">
+    <div class="selection-container">
+        <div class="project-label-container">
+            <div class="project-label">МОИ ПРОЕКТЫ</div>
+            <div class="project-add">+</div>
+        </div>
+
+        <div class="project-container">
+            <div class="project">ПРОЕКТ 1</div>
+            <div class="project-share"><img class="project-img" src="~/share.png" /></div>
+        </div>
+    </div>
+</div>
+
+
+@section Footer {
+}
