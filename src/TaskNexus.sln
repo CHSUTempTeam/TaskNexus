@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskNexus.WebApi", "TaskNexus.WebApi\TaskNexus.WebApi.csproj", "{215CBA49-E71F-414B-B149-AF31FAD2E7AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskNexus.WebApi", "TaskNexus.WebApi\TaskNexus.WebApi.csproj", "{215CBA49-E71F-414B-B149-AF31FAD2E7AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskNexus.Shared", "TaskNexus.Shared\TaskNexus.Shared.csproj", "{33364606-BA37-4661-8684-AD76B573DB02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskNexus.Shared", "TaskNexus.Shared\TaskNexus.Shared.csproj", "{33364606-BA37-4661-8684-AD76B573DB02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskNexus.Web", "TaskNexus.Web\TaskNexus.Web.csproj", "{E29C8F64-A816-430D-99A0-C8A3E17765D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskNexus.Web", "TaskNexus.Web\TaskNexus.Web.csproj", "{E29C8F64-A816-430D-99A0-C8A3E17765D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,26 +1,25 @@
 ﻿
 @page
-@model LoginModel
+@model RegisterModel
 
 @{
-	ViewData["Title"] = "Login | TaskNexus";
+	ViewData["Title"] = "Register | TaskNexus";
 }
+
 @section Header {
 }
 
-<div class="login-container">
-    <div class="login-inner-container">
+<div class="body-container">
+    <div class="login-container">
         <form action="" method="post" class="login-form">
             <div class="inner-container">
                 <div class="header-text s3">ПАНЕЛЬ УПРАВЛЕНИЯ</div>
-                <div class="header-text s5">АВТОРИЗАЦИЯ</div>
+                <div class="header-text s5">РЕГИСТРАЦИЯ</div>
                 <div class="inputs-container">
                     <input class="inputs" type="text" placeholder="ПОЧТА" name="uname" required>
+                    <input class="inputs" type="text" placeholder="НИКНЕЙМ" name="psw" required>
                     <input class="inputs" type="password" placeholder="ПАРОЛЬ" name="psw" required>
-                    <button class="login-button"  type="submit">ВОЙТИ</button>
-                    <button class="login-button" onclick="window.location.href='/Register'" id="register">
-                        РЕГИСТРАЦИЯ
-                    </button>
+                    <button class="login-button" type="submit">РЕГИСТРАЦИЯ</button>
                 </div>
 
                 <div class="header-text s3 naming lh">TASK</br>NEXUS</div>
