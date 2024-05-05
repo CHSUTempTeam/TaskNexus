@@ -1,4 +1,8 @@
 
+div{
+    user-select:none;
+}
+
 html {
   font-size: 14px;
 }
@@ -118,7 +122,7 @@ span.psw {
 
 .header-text{
     color:white;
-    padding:5px;
+    padding:15px;
 }
 
 .s3{
@@ -454,16 +458,101 @@ input[type=text], input[type=password] {
 }
 
 
-
-.selection-container{
-
+.main-container-select {
+    align-content: center;
 }
+
+
+
+.selection-container {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 30px;
+    align-content:center;
+    justify-content:center;
+    align-items: center;
+}
+
+
+
+
+
+.project-label-container {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 25px;
+}
+
+.project-label {
+    text-align:center;
+    color: #7E61F4;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+
+.project-add {
+    margin-left: 20px;
+    padding: 13px;
+    background: #7E61F4;
+    border-radius: 10px;
+    transition: 0.3s;
+    color: white;
+    line-height:0.5;
+}
+
+.project-add:hover {
+    background: #a090e0;
+    color: white;
+}
+
+
+.project-container {
+    display: flex;
+    flex-flow: row;
+    border: 2px solid rgba(126, 97, 244, 0.5);
+    border-radius: 10px;
+}
+
+.project-img {
+    height: 25px;
+    width: 25px;
+}
+
+.project-share {
+    display:flex;
+    margin: 10px;
+    padding:15px;
+    background: #7E61F4;
+    border-radius: 10px;
+    transition: 0.3s;
+    align-items:center;
+    justify-content:center;
+}
+
+.project-share:hover {
+    background: #a090e0;
+    color: white;
+}
+
+
 
 .project {
     margin: 10px;
-    padding: 25px;
+    padding: 20px;
     background: #7E61F4;
     color: white;
     border-radius: 10px;
     letter-spacing: 1px;
+    transition: 0.3s;
+    text-align: center;
+    line-height: 1;
+}
+
+.project:hover {
+    background: #a090e0;
+    color: white;
 }
