@@ -7,6 +7,9 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
 
+    @section Header{
+
+    }
 
     @foreach (var item in Model.WeatherForecastDtos)
     {
@@ -15,6 +18,10 @@
 
     @{
         if (Model.canLogin.isLogin) Response.Redirect("/Login");
+    }
+
+    @section Footer {
+
     }
 
 
