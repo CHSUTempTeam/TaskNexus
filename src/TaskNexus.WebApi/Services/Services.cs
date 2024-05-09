@@ -34,7 +34,7 @@ namespace TaskNexus.WebApi.Services
         public AnswerDto GetIsLogin([FromBody] LoginDto request, CancellationToken token) {
 
 
-            request.Login = "";
+            request.Login = "a";
 
             var isLogins = new AnswerDto {
                 Answer = "True"
