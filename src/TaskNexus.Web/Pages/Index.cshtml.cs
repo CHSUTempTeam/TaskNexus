@@ -10,16 +10,16 @@ namespace TaskNexus.Web.Pages
         private readonly ILogger<IndexModel> _logger;
         private readonly WereService wereService;
 
-        private readonly LoginService loginService;
+        private readonly IsLoginService isLoginService;
         public List<WeatherForecastDto> WeatherForecastDtos { get; set; }
 
-        public LoginDto canLogin { get; set; }
+        public IsLoginDto canLogin { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, WereService wereService, LoginService loginService)
+        public IndexModel(ILogger<IndexModel> logger, WereService wereService, IsLoginService isLoginService)
         {
             _logger = logger;
             this.wereService = wereService;
-            this.loginService = loginService;
+            this.isLoginService = isLoginService;
         }
 
         public async Task OnGet()
@@ -27,7 +27,7 @@ namespace TaskNexus.Web.Pages
             var list = await wereService.GetList(default);
             WeatherForecastDtos = list;
 
-            var sett = await loginService.GetIsLogin(default);
+            var sett = await isLoginService.GetIsLogin(default);
             canLogin = sett;
         }
     }
