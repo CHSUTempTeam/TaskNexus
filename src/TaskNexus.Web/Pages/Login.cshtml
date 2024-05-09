@@ -10,14 +10,14 @@
 
 <div class="login-container">
     <div class="login-inner-container">
-        <form action="" method="post" class="login-form">
+        <div class="login-form">
             <div class="inner-container">
                 <div class="header-text s3">ПАНЕЛЬ УПРАВЛЕНИЯ</div>
                 <div class="header-text s5">АВТОРИЗАЦИЯ</div>
                 <div class="inputs-container">
-                    <input class="inputs" type="text" placeholder="ПОЧТА" name="uname" required>
-                    <input class="inputs" type="password" placeholder="ПАРОЛЬ" name="psw" required>
-                    <button class="login-button"  type="submit">ВОЙТИ</button>
+                    <input id="login-input" class="inputs" type="text" placeholder="ПОЧТА" name="uname" required>
+                    <input id="password-input" class="inputs" type="password" placeholder="ПАРОЛЬ" name="psw" required>
+                    <button onclick="login()" class="login-button"  type="submit">ВОЙТИ</button>
                     <button class="login-button" onclick="window.location.href='/Register'" id="register">
                         РЕГИСТРАЦИЯ
                     </button>
@@ -28,9 +28,11 @@
                 <div class="circle" id="c1"></div>
                 <div class="circle" id="c2"></div>
             </div>
-        </form>
+        </div>
     </div>
 
 </div>
+
+
 @section Footer {
 }

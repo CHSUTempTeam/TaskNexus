@@ -4,7 +4,7 @@ using TaskNexus.WebApi.Abstractions;
 namespace TaskNexus.WebApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("IsLogin")]
     public class IsLoginController : ControllerBase
     {
 
@@ -26,7 +26,7 @@ namespace TaskNexus.WebApi.Controllers
 
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("GetListProject")]
     public class ListProjectController : ControllerBase {
 
         private readonly ILogger<ListProjectController> _logger;
@@ -37,8 +37,8 @@ namespace TaskNexus.WebApi.Controllers
             this.listProjectService = listProjectService;
         }
 
-        [HttpGet(Name = "GetListProject")]
-        public ListProjectDto Get(CancellationToken token) {
+        [HttpPost(Name = "GetListProject")]
+        public ListProjectDto Post(CancellationToken token) {
             return listProjectService.GetIsLogin(token);
         }
     }
@@ -47,7 +47,7 @@ namespace TaskNexus.WebApi.Controllers
 
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("GetLogin")]
     public class LoginController : ControllerBase {
 
         private readonly ILogger<LoginController> _logger;
@@ -58,9 +58,9 @@ namespace TaskNexus.WebApi.Controllers
             this.loginService = isLoginService;
         }
 
-        [HttpGet(Name = "GetLogin")]
-        public LoginDto Get(CancellationToken token) {
-            return loginService.GetIsLogin(token);
+        [HttpPost(Name = "GetLogin")]
+        public AnswerDto Post([FromBody] LoginDto loginDto, CancellationToken token) {
+            return loginService.GetIsLogin(loginDto, token);
         }
     }
 
@@ -68,7 +68,7 @@ namespace TaskNexus.WebApi.Controllers
 
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("GetRegistration")]
     public class RegistrationController : ControllerBase {
 
         private readonly ILogger<RegistrationController> _logger;
@@ -79,15 +79,15 @@ namespace TaskNexus.WebApi.Controllers
             this.registrationService = registrationService;
         }
 
-        [HttpGet(Name = "GetRegistration")]
-        public RegistrationDto Get(CancellationToken token) {
+        [HttpPost(Name = "GetRegistration")]
+        public RegistrationDto Post(CancellationToken token) {
             return registrationService.GetIsLogin(token);
         }
     }
 
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("GetProject")]
     public class ProjectController : ControllerBase {
 
         private readonly ILogger<ProjectController> _logger;
@@ -98,15 +98,15 @@ namespace TaskNexus.WebApi.Controllers
             this.projectService = projectService;
         }
 
-        [HttpGet(Name = "GetProject")]
-        public ProjectDto Get(CancellationToken token) {
+        [HttpPost(Name = "GetProject")]
+        public ProjectDto Post(CancellationToken token) {
             return projectService.GetIsLogin(token);
         }
     }
 
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("GetGetProject")]
     public class GetProjectController : ControllerBase {
 
         private readonly ILogger<GetProjectController> _logger;
@@ -117,15 +117,15 @@ namespace TaskNexus.WebApi.Controllers
             this.getProjectService = getProjectService;
         }
 
-        [HttpGet(Name = "GetGetProject")]
-        public GetProjectDto Get(CancellationToken token) {
+        [HttpPost(Name = "GetGetProject")]
+        public GetProjectDto Post(CancellationToken token) {
             return getProjectService.GetIsLogin(token);
         }
     }
 
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("GetCreateProject")]
     public class CreateProjectController : ControllerBase {
 
         private readonly ILogger<CreateProjectController> _logger;
@@ -136,8 +136,8 @@ namespace TaskNexus.WebApi.Controllers
             this.createProjectService = createProjectService;
         }
 
-        [HttpGet(Name = "GetCreateProject")]
-        public CreateProjectDto Get(CancellationToken token) {
+        [HttpPost(Name = "GetCreateProject")]
+        public CreateProjectDto Post(CancellationToken token) {
             return createProjectService.GetIsLogin(token);
         }
     }

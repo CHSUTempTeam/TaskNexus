@@ -1,4 +1,6 @@
-﻿namespace TaskNexus.WebApi.Abstractions {
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace TaskNexus.WebApi.Abstractions {
 
     public interface IIsLoginService {
         IsLoginDto GetIsLogin(CancellationToken token);
@@ -10,7 +12,7 @@
     }
 
     public interface ILoginService {
-        LoginDto GetIsLogin(CancellationToken token);
+        AnswerDto GetIsLogin([FromBody] LoginDto loginDto, CancellationToken token);
     }
 
     public interface IRegistrationService {
