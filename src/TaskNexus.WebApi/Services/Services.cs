@@ -2,6 +2,7 @@
 using System;
 using TaskNexus.WebApi;
 using TaskNexus.WebApi.Abstractions;
+using TaskNexus.WebApi.DatabaseConnect;
 
 namespace TaskNexus.WebApi.Services
 {
@@ -35,9 +36,9 @@ namespace TaskNexus.WebApi.Services
 
 
             request.Login = "a";
-
+    
             var isLogins = new AnswerDto {
-                Answer = "True"
+                Answer = DatabaseConnection.Main()
             };
 
             return isLogins;
