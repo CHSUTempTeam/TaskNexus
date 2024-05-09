@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using TaskNexus.WebApi;
 using TaskNexus.WebApi.Abstractions;
 
@@ -30,9 +31,13 @@ namespace TaskNexus.WebApi.Services
 
     public class LoginService : ILoginService {
 
-        public LoginDto GetIsLogin(CancellationToken token) {
-            var isLogins = new LoginDto {
+        public AnswerDto GetIsLogin([FromBody] LoginDto request, CancellationToken token) {
 
+
+            request.Login = "a";
+
+            var isLogins = new AnswerDto {
+                Answer = "True"
             };
 
             return isLogins;

@@ -6,8 +6,6 @@ namespace TaskNexus.Web.Extensions
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            // тут надо интерфейс регать
-            services.AddSingleton<WereService>();
             services.AddSingleton<IsLoginService>();
             services.AddSingleton<ListProjectService>();
             services.AddSingleton<LoginService>();

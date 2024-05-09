@@ -7,10 +7,7 @@ namespace TaskNexus.WebApi.Extensions
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            // тут надо интерфейс регать
-            services.AddScoped<IWereService, WereService>();
             services.AddScoped<IIsLoginService, IsLoginService>();
-
             services.AddScoped<IListProjectService, ListProjectService>();
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<IRegistrationService, RegistrationService>();
