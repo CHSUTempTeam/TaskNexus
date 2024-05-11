@@ -8,7 +8,7 @@ namespace TaskNexus.Web.Extensions
         {
             services.AddSingleton<IsLoginService>();
             services.AddSingleton<ListProjectService>();
-            services.AddSingleton<LoginService>();
+            services.AddSingleton<LoginUService>();
             services.AddSingleton<RegistrationService>();
             services.AddSingleton<ProjectService>();
             services.AddSingleton<GetProjectService>();

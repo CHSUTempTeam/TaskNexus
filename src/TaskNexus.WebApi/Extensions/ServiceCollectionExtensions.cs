@@ -7,6 +7,7 @@ namespace TaskNexus.WebApi.Extensions
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
+            services.AddScoped<ISessionService, SessionService>();
             services.AddScoped<IIsLoginService, IsLoginService>();
             services.AddScoped<IListProjectService, ListProjectService>();
             services.AddScoped<ILoginService, LoginService>();

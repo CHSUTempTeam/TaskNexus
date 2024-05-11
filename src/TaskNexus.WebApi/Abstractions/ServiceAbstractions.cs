@@ -1,18 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 namespace TaskNexus.WebApi.Abstractions {
+    public interface ISessionService {
+        AnswerDto GetAnswer(CancellationToken token);
+    }
+
 
     public interface IIsLoginService {
         IsLoginDto GetIsLogin(CancellationToken token);
     }
     
-
     public interface IListProjectService {
-        ListProjectDto GetIsLogin(CancellationToken token);
+        ListProjectDto GetList(CancellationToken token, IdDto request);
     }
 
     public interface ILoginService {
-        AnswerDto GetIsLogin([FromBody] LoginDto loginDto, CancellationToken token);
+        AnswerDto GetAnswer(CancellationToken token, LoginDto request);
     }
 
     public interface IRegistrationService {

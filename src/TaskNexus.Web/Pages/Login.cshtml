@@ -36,3 +36,30 @@
 
 @section Footer {
 }
+
+@section Scripts {
+    <script>
+        function login() {
+            var t1 = document.getElementById("login-input").value
+            var t2 = document.getElementById("password-input").value
+
+            let json = {
+                login: document.getElementById("login-input").value,
+                password: document.getElementById("password-input").value
+            }
+
+            if (t1 != "" && t2 != "") {
+                HttpRequestPost('GetLogin', function (request) {
+
+                    if (request.answer != "False") {
+                        sessionStorage.setItem('sessionId', request.answer);
+                        alert(request.answer)
+                        window.location.href = '/Select'
+                    }
+
+                }, json)
+            }
+        }
+
+    </script>
+}

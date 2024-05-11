@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using TaskNexus.Web.Services;
 using TaskNexus.WebApi.Abstractions;
 
 namespace TaskNexus.WebApi.Controllers
@@ -38,8 +39,8 @@ namespace TaskNexus.WebApi.Controllers
         }
 
         [HttpPost(Name = "GetListProject")]
-        public ListProjectDto Post(CancellationToken token) {
-            return listProjectService.GetIsLogin(token);
+        public ListProjectDto Post(CancellationToken token, IdDto id) {
+            return listProjectService.GetList(token, id);
         }
     }
 
@@ -59,8 +60,26 @@ namespace TaskNexus.WebApi.Controllers
         }
 
         [HttpPost(Name = "GetLogin")]
-        public AnswerDto Post([FromBody] LoginDto loginDto, CancellationToken token) {
-            return loginService.GetIsLogin(loginDto, token);
+        public AnswerDto Post(CancellationToken token,[FromBody] LoginDto loginDto) {
+            return loginService.GetAnswer(token, loginDto);
+        }
+    }
+
+    [ApiController]
+    [Route("GetSession")]
+    public class SessionController : ControllerBase {
+
+        private readonly ILogger<LoginController> _logger;
+        private readonly ISessionService sessionService;
+
+        public SessionController(ILogger<LoginController> logger, ISessionService sessionService) {
+            _logger = logger;
+            this.sessionService = sessionService;
+        }
+
+        [HttpGet(Name = "GetSession")]
+        public AnswerDto Get(CancellationToken token) {
+            return sessionService.GetAnswer(token);
         }
     }
 

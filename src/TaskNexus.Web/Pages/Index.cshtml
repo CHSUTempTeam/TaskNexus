@@ -11,11 +11,6 @@
 
     }
 
-    @foreach (var item in Model.WeatherForecastDtos)
-    {
-        <p>@item.TemperatureF</p>
-    }
-
     @{
         if (Model.canLogin.isLogin) Response.Redirect("/Login");
     }

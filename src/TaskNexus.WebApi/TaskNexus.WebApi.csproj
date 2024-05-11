@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TaskNexus.Shared\TaskNexus.Shared.csproj" />
+    <ProjectReference Include="..\TaskNexus.Web\TaskNexus.Web.csproj" />
   </ItemGroup>
 
 </Project>

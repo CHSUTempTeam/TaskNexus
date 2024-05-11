@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using TaskNexus.WebApi;
 
 namespace TaskNexus.Web.Services
 {
+
     public class IsLoginService
     {
         public async Task<IsLoginDto> GetIsLogin(CancellationToken token)
@@ -14,19 +15,23 @@ namespace TaskNexus.Web.Services
 
 
     public class ListProjectService {
-        public async Task<ListProjectDto> GetIsLogin(CancellationToken token) {
+        public async Task<ListProjectDto> GetList(CancellationToken token, IdDto request) {
             HttpClient httpClient = new HttpClient();
             return await httpClient.GetFromJsonAsync<ListProjectDto>("http://localhost:5275/ListProject", token);
         }
     }
 
-
-    public class LoginService {
-        public async Task<LoginDto> GetAnswer(CancellationToken token) {
+    public class LoginUService {
+        public async Task<AnswerDto> Post(CancellationToken token, LoginDto request) {
             HttpClient httpClient = new HttpClient();
-            return await httpClient.GetFromJsonAsync<LoginDto>("http://localhost:5275/Login", token);
+            // тут мы его должны получить
+            HttpResponseMessage response = await httpClient.PostAsJsonAsync("http://localhost:5275/GetLogin", token);
+
+            // Получаем ответ и возвращаем его
+            return await response.Content.ReadFromJsonAsync<AnswerDto>();
         }
     }
+
 
 
     public class RegistrationService {
@@ -59,5 +64,6 @@ namespace TaskNexus.Web.Services
             return await httpClient.GetFromJsonAsync<CreateProjectDto>("http://localhost:5275/CreateProject", token);
         }
     }
-
 }
+
+

@@ -8,15 +8,10 @@
 
   <ItemGroup>
     <Content Remove="Pages\Shared\Header.cshtml" />
-    <Content Remove="wwwroot\js\ListProjectDto.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Pages\Shared\Header.cshtml.css" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="wwwroot\js\ListProjectDto.cs" />
   </ItemGroup>
 
   <ItemGroup>
