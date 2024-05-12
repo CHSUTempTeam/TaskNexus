@@ -1,5 +1,6 @@
 ﻿using TaskNexus.WebApi.Services;
 using TaskNexus.WebApi.Abstractions;
+using TaskNexus.WebApi.DatabaseConnect;
 
 namespace TaskNexus.WebApi.Extensions
 {
@@ -15,7 +16,10 @@ namespace TaskNexus.WebApi.Extensions
             services.AddScoped<IProjectService, ProjectService>();
             services.AddScoped<IGetProjectService, GetProjectService>();
             services.AddScoped<ICreateProjectService, CreateProjectService>();
-
+            services.AddScoped<IOutService, OutService>();
+            services.AddScoped<IRenameProjectService, RenameProjectService>();
+            services.AddScoped<IDeleteProjectService, DeleteProjectService>();
+            services.AddScoped<IAddUserToProjectService, AddUserToProjectService>();
             return services;
         }
     }

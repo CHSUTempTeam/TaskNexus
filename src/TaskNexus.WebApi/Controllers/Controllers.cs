@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using TaskNexus.Web.Services;
 using TaskNexus.WebApi.Abstractions;
 
 namespace TaskNexus.WebApi.Controllers
@@ -39,8 +38,8 @@ namespace TaskNexus.WebApi.Controllers
         }
 
         [HttpPost(Name = "GetListProject")]
-        public ListProjectDto Post(CancellationToken token, IdDto id) {
-            return listProjectService.GetList(token, id);
+        public ListProjectDto Post(CancellationToken token, [FromBody] SessionDto session) {
+            return listProjectService.GetList(token, session);
         }
     }
 
@@ -83,8 +82,74 @@ namespace TaskNexus.WebApi.Controllers
         }
     }
 
+    [Route("GetOut")]
+    public class OutController : ControllerBase {
 
+        private readonly ILogger<LoginController> _logger;
+        private readonly IOutService outService;
 
+        public OutController(ILogger<LoginController> logger, IOutService outService) {
+            _logger = logger;
+            this.outService = outService;
+        }
+
+        [HttpPost(Name = "GetOut")]
+        public AnswerDto Post(CancellationToken token, [FromBody] SessionDto session) {
+            return outService.GetAnswer(token, session);
+        }
+    }
+
+    [Route("GetRenameProject")]
+    public class RenameController : ControllerBase {
+
+        private readonly ILogger<LoginController> _logger;
+        private readonly IRenameProjectService renameProjectService;
+
+        public RenameController(ILogger<LoginController> logger, IRenameProjectService renameProjectService) {
+            _logger = logger;
+            this.renameProjectService = renameProjectService;
+        }
+
+        [HttpPost(Name = "GetRenameProject")]
+        public AnswerDto Post(CancellationToken token, [FromBody] RenameProjectDto rename) {
+            return renameProjectService.GetAnswer(token, rename);
+        }
+    }
+
+    [Route("GetDeleteProject")]
+    public class DeleteController : ControllerBase {
+
+        private readonly ILogger<LoginController> _logger;
+        private readonly IDeleteProjectService deleteProjectService;
+
+        public DeleteController(ILogger<LoginController> logger, IDeleteProjectService deleteProjectService) {
+            _logger = logger;
+            this.deleteProjectService = deleteProjectService;
+        }
+
+        [HttpPost(Name = "GetDeleteProject")]
+        public AnswerDto Post(CancellationToken token, [FromBody] DeleteProjectDto delete) {
+            return deleteProjectService.GetAnswer(token, delete);
+        }
+    }
+    
+
+    [Route("GetAddUserToProject")]
+    public class AddUserToProjectController : ControllerBase {
+
+        private readonly ILogger<LoginController> _logger;
+        private readonly IAddUserToProjectService addUserToProjectService;
+
+        public AddUserToProjectController(ILogger<LoginController> logger, IAddUserToProjectService addUserToProjectService) {
+            _logger = logger;
+            this.addUserToProjectService = addUserToProjectService;
+        }
+
+        [HttpPost(Name = "GetAddUserToProject")]
+        public AnswerDto Post(CancellationToken token, [FromBody] AddUserToProjectDto add) {
+            return addUserToProjectService.GetAnswer(token, add);
+        }
+    }
 
     [ApiController]
     [Route("GetRegistration")]
@@ -99,8 +164,8 @@ namespace TaskNexus.WebApi.Controllers
         }
 
         [HttpPost(Name = "GetRegistration")]
-        public RegistrationDto Post(CancellationToken token) {
-            return registrationService.GetIsLogin(token);
+        public AnswerDto Post(CancellationToken token, [FromBody] RegistrationDto registrationDto) {
+            return registrationService.GetRegistration(token, registrationDto);
         }
     }
 
@@ -156,8 +221,8 @@ namespace TaskNexus.WebApi.Controllers
         }
 
         [HttpPost(Name = "GetCreateProject")]
-        public CreateProjectDto Post(CancellationToken token) {
-            return createProjectService.GetIsLogin(token);
+        public AnswerDto Post(CancellationToken token, [FromBody] SessionDto sessionDto) {
+            return createProjectService.GetAnswer(token, sessionDto);
         }
     }
 }
