@@ -1,5 +1,6 @@
 ﻿
 function HttpRequestPost(URL, Func, json) {
+
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -16,4 +17,14 @@ function HttpRequestPost(URL, Func, json) {
     xhr.open('POST', "http://localhost:5275/" + URL, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify(json));
+}
+
+function out() {
+    let json = {
+        session: sessionStorage.getItem('sessionId')
+    }
+    HttpRequestPost('GetOut', function (request) {
+        
+    }, json)
+    window.location.href = '/Login'
 }

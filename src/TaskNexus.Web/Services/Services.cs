@@ -15,7 +15,7 @@ namespace TaskNexus.Web.Services
 
 
     public class ListProjectService {
-        public async Task<ListProjectDto> GetList(CancellationToken token, IdDto request) {
+        public async Task<ListProjectDto> GetList(CancellationToken token, SessionDto request) {
             HttpClient httpClient = new HttpClient();
             return await httpClient.GetFromJsonAsync<ListProjectDto>("http://localhost:5275/ListProject", token);
         }

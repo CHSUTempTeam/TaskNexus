@@ -169,7 +169,7 @@ span.psw {
 }
 
 /* ¬ходы полной ширины */
-input[type=text], input[type=password] {
+.inputs-login {
     padding: 10px 30px;
     margin: 15px;
     display: inline-block;
@@ -483,28 +483,62 @@ input[type=text], input[type=password] {
     align-items: center;
     padding-top: 10px;
     padding-bottom: 25px;
+    padding-left: 15px;
+
 }
 
 .project-label {
     text-align:center;
     color: #7E61F4;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     letter-spacing: 1px;
 }
 
 
 .project-add {
-    margin-left: 20px;
-    padding: 13px;
+    margin: 10px;
+    padding: 15px;
     background: #7E61F4;
     border-radius: 10px;
     transition: 0.3s;
     color: white;
-    line-height:0.5;
+    line-height: 0.5;
+    margin-left: auto;
 }
 
 .project-add:hover {
+    background: #a090e0;
+    color: white;
+}
+
+.project-copy {
+    margin: 10px;
+    padding: 15px;
+    background: #7E61F4;
+    border-radius: 10px;
+    transition: 0.3s;
+    color: white;
+    line-height: 0.5;
+}
+
+.project-copy:hover {
+    background: #a090e0;
+    color: white;
+}
+
+.project-reload {
+    margin: 10px;
+    padding: 15px;
+    background: #7E61F4;
+    border-radius: 10px;
+    transition: 0.3s;
+    color: white;
+    line-height: 0.5;
+}
+
+.project-reload:hover {
     background: #a090e0;
     color: white;
 }
@@ -520,22 +554,45 @@ input[type=text], input[type=password] {
     width: 25px;
 }
 
-.project-share {
-    display:flex;
+.project-buttons {
+    display: flex;
     margin: 10px;
-    padding:15px;
+    padding: 15px;
     background: #7E61F4;
     border-radius: 10px;
     transition: 0.3s;
-    align-items:center;
-    justify-content:center;
+    align-items: center;
+    justify-content: center;
 }
 
-.project-share:hover {
+.project-buttons {
+    display: flex;
+    margin: 10px;
+    padding: 15px;
+    background: #7E61F4;
+    border-radius: 10px;
+    transition: 0.3s;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-buttons-green {
+    background: #9eff87;
+    display:none;
+}
+
+.project-buttons-red {
+    background: #f46161;
+}
+
+.project-buttons:hover {
     background: #a090e0;
     color: white;
 }
-
+.project-buttons-red:hover {
+    background: #f28181;
+    color: white;
+}
 
 
 .project {
@@ -548,9 +605,60 @@ input[type=text], input[type=password] {
     transition: 0.3s;
     text-align: center;
     line-height: 1;
+    min-width:200px;
 }
 
 .project:hover {
     background: #a090e0;
     color: white;
+}
+
+
+.project {
+    margin: 10px;
+    padding: 20px;
+    background: #7E61F4;
+    color: white;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    text-align: center;
+    line-height: 1;
+    min-width: 200px;
+}
+
+.project:hover {
+    background: #a090e0;
+    color: white;
+}
+
+.project-input {
+    display:none;
+    margin: 10px;
+    padding: 14px;
+    background: #7E61F4;
+    color: white;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    text-align: center;
+    line-height: 1;
+    min-width: 200px;
+    font-weight: bold;
+    border:0;
+}
+
+
+.project-accept {
+    margin: 10px;
+    padding: 20px;
+    background: #f46161;
+    color: white;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    text-align: center;
+    line-height: 1;
+    min-width: 200px;
+    display:none;
 }

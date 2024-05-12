@@ -1,13 +1,14 @@
-using System.ComponentModel;
 
 namespace TaskNexus.WebApi {
     public class AnswerDto {
         public string Answer { get; set; }
     }
 
-    public class IdDto {
-        public string Id { get; set; }
+    public class SessionDto {
+        public string Session { get; set; }
     }
+
+
     public class IdProjectDto {
         public string Id { get; set; }
     }
@@ -46,7 +47,22 @@ namespace TaskNexus.WebApi {
         public string NameProject { get; set; }
     }
 
+    public class RenameProjectDto {
+        public string Session { get; set; }
+        public string NameProject { get; set; }
+        public string CountProject { get; set; }
+    }
 
+    public class DeleteProjectDto {
+        public string Session { get; set; }
+        public string CountProject { get; set; }
+    }
+
+    public class AddUserToProjectDto {
+        public string Session { get; set; }
+        public string Session_Worker { get; set; }
+        public string CountProject { get; set; }
+    }
 } 
 
 

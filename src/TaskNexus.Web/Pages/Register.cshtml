@@ -11,15 +11,15 @@
 
 <div class="body-container">
     <div class="login-container">
-        <form action="" method="post" class="login-form">
+        <div class="login-form">
             <div class="inner-container">
                 <div class="header-text s3">ПАНЕЛЬ УПРАВЛЕНИЯ</div>
                 <div class="header-text s5">РЕГИСТРАЦИЯ</div>
                 <div class="inputs-container">
-                    <input class="inputs" type="text" placeholder="ПОЧТА" name="uname" required>
-                    <input class="inputs" type="text" placeholder="НИКНЕЙМ" name="psw" required>
-                    <input class="inputs" type="password" placeholder="ПАРОЛЬ" name="psw" required>
-                    <button class="login-button" type="submit">РЕГИСТРАЦИЯ</button>
+                    <input id="login-input" class="inputs" type="text" placeholder="ПОЧТА" name="uname" required>
+                    <input id="nickname-input" class="inputs" type="text" placeholder="НИКНЕЙМ" name="psw" required>
+                    <input id="password-input"  class="inputs" type="password" placeholder="ПАРОЛЬ" name="psw" required>
+                    <button onclick="registration()" class="login-button" type="submit">РЕГИСТРАЦИЯ</button>
                 </div>
 
                 <div class="header-text s3 naming lh">TASK</br>NEXUS</div>
@@ -27,9 +27,36 @@
                 <div class="circle" id="c1"></div>
                 <div class="circle" id="c2"></div>
             </div>
-        </form>
+        </div>
     </div>
 
 </div>
 @section Footer {
+}
+
+
+@section Scripts {
+    <script>
+        function registration() {
+            var t1 = document.getElementById("login-input").value
+            var t2 = document.getElementById("password-input").value
+            var t3 = document.getElementById("nickname-input").value
+
+            if (t1 != "" && t2 != "" && t3 != "") {
+                let json = {
+                    login: t1,
+                    password: t2,
+                    nickname: t3
+                }
+
+                HttpRequestPost('GetRegistration', function (request) {
+                    if (request.answer != "False") {
+                        window.location.href = '/Login'
+                    }
+
+                }, json)
+            }
+        }
+
+    </script>
 }

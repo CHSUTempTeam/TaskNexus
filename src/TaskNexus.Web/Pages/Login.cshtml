@@ -13,10 +13,10 @@
         <div class="login-form">
             <div class="inner-container">
                 <div class="header-text s3">ПАНЕЛЬ УПРАВЛЕНИЯ</div>
-                <div class="header-text s5">АВТОРИЗАЦИЯ</div>
+                <div id="label" class="header-text s5">АВТОРИЗАЦИЯ</div>
                 <div class="inputs-container">
-                    <input id="login-input" class="inputs" type="text" placeholder="ПОЧТА" name="uname" required>
-                    <input id="password-input" class="inputs" type="password" placeholder="ПАРОЛЬ" name="psw" required>
+                    <input id="login-input" class="inputs inputs-login" type="text" placeholder="ПОЧТА" name="uname" required>
+                    <input id="password-input" class="inputs inputs-login" type="password" placeholder="ПАРОЛЬ" name="psw" required>
                     <button onclick="login()" class="login-button"  type="submit">ВОЙТИ</button>
                     <button class="login-button" onclick="window.location.href='/Register'" id="register">
                         РЕГИСТРАЦИЯ
@@ -43,17 +43,30 @@
             var t1 = document.getElementById("login-input").value
             var t2 = document.getElementById("password-input").value
 
-            let json = {
-                login: document.getElementById("login-input").value,
-                password: document.getElementById("password-input").value
-            }
-
             if (t1 != "" && t2 != "") {
+                let json = {
+                    login: t1,
+                    password: t2
+                }
+
                 HttpRequestPost('GetLogin', function (request) {
 
-                    if (request.answer != "False") {
+                    if (request.answer == "bad_password") {
+                        document.getElementById("label").innerHTML = "НЕВЕРНЫЙ ПАРОЛЬ"
+                        document.getElementById("label").style.color = "#ff4040"
+                        setTimeout(function () {
+                            document.getElementById("label").innerHTML = "АВТОРИЗАЦИЯ"
+                            document.getElementById("label").style.color = "white"
+                        }, 1500)
+                    } else if(request.answer == "bad_login") {
+                        document.getElementById("label").innerHTML = "НЕВЕРНЫЙ ЛОГИН"
+                        document.getElementById("label").style.color = "#ff4040"
+                        setTimeout(function () {
+                            document.getElementById("label").innerHTML = "АВТОРИЗАЦИЯ"
+                            document.getElementById("label").style.color = "white"
+                        }, 1500)
+                    }else if (request.answer != "False") {
                         sessionStorage.setItem('sessionId', request.answer);
-                        alert(request.answer)
                         window.location.href = '/Select'
                     }
 

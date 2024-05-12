@@ -20,7 +20,7 @@
             </div>
             <div class="nav-container" style="margin-left:auto">
                 <img class="img-avatar">
-                <button class="button-exit">
+                <button onclick="out()" class="button-exit">
                     <img class="img-exit" src="~/exit.png">
                 </button>
             </div>
@@ -32,14 +32,12 @@
     <div class="selection-container">
         <div class="project-label-container">
             <div class="project-label">МОИ ПРОЕКТЫ</div>
-            <div class="project-add">+</div>
+            <div onclick="addProject()" class="project-add"><img class="project-img" src="~/plus.png" /></div>
+            <div onclick="copySession()" class="project-copy"><img class="project-img" src="~/copy.png" /></div>
+            <div onclick="updateProjects()" class="project-reload"><img class="project-img" src="~/reload.png" /></div>
         </div>
+        <div id="main-container-select">
 
-        <div class="project-container">
-            @* @for(int i = 0; i < Model.list.Projects.Count; i++){
-                <div class="project">@Model.list.Projects</div>
-                <div class="project-share"><img class="project-img" src="~/share.png" /></div>
-            } *@
         </div>
     </div>
 </div>
@@ -52,7 +50,138 @@
 
 @section Scripts {
     <script>
-        alert(sessionStorage.getItem('sessionId'))
+
+        function updateProjects() {
+            let json = {
+                session: sessionStorage.getItem('sessionId')
+            }
+
+            HttpRequestPost('GetListProject', function (request) {
+                var block = "";
+                for (var i = 0; i < request.projects.length;i++) {
+                    block += '<div class="project-container">\
+                            <div id="project-field' + i + '" class="project">' + request.projects[i] + '</div>\
+                            <input id="project-input' + i + '" type="text" class="project-input" value="' + request.projects[i] + '"></input>\
+                            <div id="project-rename' + i + '" class="project-buttons" onclick="changes('+i+')"><img class="project-img" src="/rename.png"/></div>\
+                            <div id="project-ok' + i + '" class="project-buttons project-buttons-green" onclick="changes2(' + i + ')"><img class="project-img" src="/galochka.png"/></div>\
+                            <div class="project-buttons"><img class="project-img" onclick="addUserToProject(' + i + ')" src="/add.png"/></div>\
+                            <div class="project-buttons project-buttons-red" onclick="deleteProject(' + i + ')"> <img class="project-img" src="/delete.png"/></div>\
+                            <div id="project-accept' + i + '" class="project-accept" onclick="acceptDelete(' + i + ')">ПОДТВЕРДИТЬ</div>\
+                            </div>'
+                }
+                document.getElementById("main-container-select").innerHTML = block;
+            }, json)
+        }
+        //
+
+        function changes(ids){
+
+            document.getElementById("project-field" + ids).style.display = "none"
+            document.getElementById("project-input" + ids).style.display = "block"
+
+            document.getElementById("project-rename" + ids).style.display = "none"
+            document.getElementById("project-ok" + ids).style.display = "block"
+        }
+
+        function changes2(ids) {
+
+            if (document.getElementById("project-input" + ids).value != "") {
+                document.getElementById("project-field" + ids).style.display = "block"
+                document.getElementById("project-input" + ids).style.display = "none"
+
+                document.getElementById("project-rename" + ids).style.display = "block"
+                document.getElementById("project-ok" + ids).style.display = "none"
+
+                let json = {
+                    session: sessionStorage.getItem('sessionId'),
+                    nameProject: document.getElementById("project-input" + ids).value,
+                    countProject: (ids + "")
+                }
+
+                HttpRequestPost('GetRenameProject', function (request) {
+                    if (request.answer == "True") {
+                        updateProjects();
+                    }
+                }, json)
+            }
+        }
+
+
+        function deleteProject(ids) {
+
+            if (document.getElementById("project-accept" + ids).style.display == "") {
+                document.getElementById("project-accept" + ids).style.display = "block"
+            } else {
+                document.getElementById("project-accept" + ids).style.display = ""
+            }
+        }
+
+        function acceptDelete(ids) {
+
+            let json = {
+                session: sessionStorage.getItem('sessionId'),
+                countProject: (ids + "")
+            }
+
+            HttpRequestPost('GetDeleteProject', function (request) {
+                if (request.answer == "True") {
+                    updateProjects();
+                }
+            }, json)
+        }
+
+
+
+
+        function addProject(){
+            let json = {
+                session: sessionStorage.getItem('sessionId')
+            }
+
+            HttpRequestPost('GetCreateProject', function (request) {
+                if(request.answer == "True") {
+                    updateProjects();
+                }
+            }, json)
+        }
+
+
+        updateProjects()
+
+
+
+
+        function addUserToProject(ids) {
+            navigator.clipboard.readText()
+                .then(text => {
+                    let json = {
+                        session: sessionStorage.getItem('sessionId'),
+                        session_Worker: text,
+                        countProject: (ids + "")
+                    }
+
+                    HttpRequestPost('GetAddUserToProject', function (request) {
+                        if (request.answer == "True") {
+                            updateProjects();
+                        }
+                    }, json)
+                })
+                .catch(err => {
+                    console.error("Ошибка при чтении текста из буфера обмена: ", err);
+                });
+
+            
+        }
+
+
+        function copySession() {
+            navigator.clipboard.writeText(sessionStorage.getItem('sessionId'))
+                .then(() => {
+                })
+                .catch(err => {
+                    console.error("Ошибка при копировании текста в буфер обмена: ", err);
+                });
+        }
 
     </script>
 }
